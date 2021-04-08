@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.security.Provider;
 import java.util.List;
 
 public class LocProviderListActivity extends AppCompatActivity {
@@ -29,11 +30,10 @@ public class LocProviderListActivity extends AppCompatActivity {
                 lm = (LocationManager) getSystemService(LOCATION_SERVICE);
 
                 locProvList = lm.getAllProviders();
-
                 String s = "";
-                for (int i = 0; i < locProvList.size(); i++) {
-                    s += "Loc.Provider: " + locProvList.get(i) + "\n" + "Status: "
-                            + lm.isProviderEnabled(locProvList.get(i)) + "\n\n";
+                for (String locProvList : locProvList){
+                    s += "Loc.Provider: " + locProvList + "\n"
+                            + "Status:" + lm.isProviderEnabled(locProvList) + "\n\n";
                 }
                 mtextView.setText(s);
             }
